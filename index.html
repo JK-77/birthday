@@ -25,7 +25,15 @@
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-  <audio class="song" autoplay loop preload="auto"><source src="hbd.mp3" type="audio/mpeg"></audio>
+  <audio class="song" loop preload="auto"><source src="hbd.mp3" type="audio/mpeg"></audio>
+  <button class="music-gate" id="music-gate" type="button">
+    <span class="music-gate-glow" aria-hidden="true"></span>
+    <p class="music-gate-kicker">✦ a little birthday magic ✦</p>
+    <span class="music-gate-note" aria-hidden="true">♪</span>
+    <h2>Turn the volume up</h2>
+    <p class="music-gate-copy">Then click anywhere to play the song.</p>
+    <span class="music-gate-hint">tap to begin</span>
+  </button>
   <div class="glow glow-one"></div><div class="glow glow-two"></div>
   <div class="stars" aria-hidden="true"></div>
   <div class="balloon-sky" aria-hidden="true">

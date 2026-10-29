@@ -2,9 +2,11 @@ const button = document.querySelector('#celebrate');
 const wish = document.querySelector('#wish');
 const audio = document.querySelector('.song');
 const confetti = document.querySelector('.confetti');
+const musicGate = document.querySelector('#music-gate');
 
 function startMusic() {
-  audio.play().catch(() => {});
+  audio.volume = 0.7;
+  return audio.play().catch(() => {});
 }
 
 function makeConfetti() {
@@ -20,14 +22,23 @@ function makeConfetti() {
   }
 }
 
-window.addEventListener('load', () => {
-  audio.volume = 0.55;
+function openCelebration() {
+  if (document.body.classList.contains('music-on')) return;
+  document.body.classList.add('music-on');
+  musicGate.classList.add('hidden');
+  musicGate.setAttribute('aria-hidden', 'true');
   startMusic();
   makeConfetti();
   setTimeout(() => confetti.replaceChildren(), 5600);
-});
+}
 
-document.addEventListener('pointerdown', startMusic, { once: true });
+musicGate.addEventListener('click', openCelebration);
+musicGate.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    openCelebration();
+  }
+});
 
 button.addEventListener('click', () => {
   document.body.classList.add('celebrating');
